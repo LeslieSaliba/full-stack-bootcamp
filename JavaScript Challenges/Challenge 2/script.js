@@ -4,7 +4,7 @@ if (age >= 20) {
     console.log('You can enter this room.');
 }
 else {
-    console.log("You can't enter this room.");
+    console.log("You cannot enter this room.");
 }
 
 const expression1 = 5 > 3;
@@ -41,8 +41,25 @@ let needDriver = false;
 if (age1 < 18 && hasDriverLicense == false && hasCar == false) {
     needDriver = true;
     console.log(needDriver + " after rechecking age, license and car possession");
-}else{
+} else {
     console.log(needDriver + " doesn't need driver")
 }
 
 //Step3
+
+let role = "admin";
+
+switch (role) {
+    case "admin":
+      console.log("You have read and write access for the data.");
+      break;
+    case "user":
+      console.log("You have only read access for the data.");
+      break;
+    case "guest":
+      console.log("You have no access for the data.");
+      break;
+      default:
+        console.log("User role is not recognized.");
+        break;
+  }
