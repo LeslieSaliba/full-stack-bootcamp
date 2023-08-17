@@ -18,7 +18,31 @@ console.log(expression3); // false
 console.log(expression4); // true
 
 //Step2
+const age1 = 25;
+const hasDriverLicense = true;
+const hasCar = false;
 
+let canDrive = false;
 
+if (age1 >= 18 && hasDriverLicense == true) {
+    canDrive = true;
+    console.log(canDrive + " after checking age and license");
+}
+
+let canRentCar = false;
+
+if (age1 >= 22 && hasDriverLicense == true && hasCar == false) { //or != true
+    canRentCar = true;
+    console.log(canRentCar + " after checking age, license and car possession");
+}
+
+let needDriver = false;
+
+if (age1 < 18 && hasDriverLicense == false && hasCar == false) {
+    needDriver = true;
+    console.log(needDriver + " after rechecking age, license and car possession");
+}else{
+    console.log(needDriver + " doesn't need driver")
+}
 
 //Step3
