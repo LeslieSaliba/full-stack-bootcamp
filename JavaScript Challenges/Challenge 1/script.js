@@ -1,5 +1,7 @@
+// Step 1
 console.log('I am linked now!');
 
+// Step 2
 let name = "Leslie";
 alert(name);
 
@@ -7,6 +9,7 @@ function alertBox() {
     alert(name);
 }
 
+//Step 3
 var age;
 const lastName = "Saliba";
 let DOB;
@@ -18,6 +21,7 @@ console.log(age);
 
 age = 25;
 
+//Step 4
 console.log(age, lastName, DOB);
 
 console.log("This is a text");
@@ -44,6 +48,7 @@ console.log(car + " object");
 console.log(x + " boolean");
 console.log(y + " undefined");
 
+//Step 5
 let myText = "Test";
 let myText2 = 'Test2';
 let myText3 = `Test3`;
@@ -62,3 +67,10 @@ console.log(doubleQuote);
 console.log(tryThisAlso);
 
 console.log("Single and double quotations don't allow interpolation usage. It only works with backticks.");
+
+//Step 6
+let string1 = "hello, ";
+let string2 = "goodbye";
+let result = string1.concat(string2);
+console.log(result);
+
