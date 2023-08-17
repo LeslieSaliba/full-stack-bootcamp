@@ -133,3 +133,14 @@ console.log(number5 <= 5);        // true
 console.log(number5 <= 8);        // true 
 console.log(string10 <= "10");     // true (strings and numbers are compared character by character)
 console.log(booleanF <= 0);  // true (false is converted to 0)
+
+//Step 8
+
+let result0 = 5 + 3 * 2; // 11
+console.log(result0);
+
+let result1 = 10 / 2 + 3; // 8
+let result2 = 10 / (2 + 3); // 2
+console.log(result1);
+console.log(result2);
+console.log('Same rules as in maths'); 
