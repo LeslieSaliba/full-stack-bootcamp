@@ -5,9 +5,13 @@ console.log('I am linked now!');
 let name = "Leslie";
 alert(name);
 
-function alertBox() {
-    alert(name);
-}
+
+//function alertBox() {
+//   alert(name);
+//}
+
+// correction (no need for box)
+alert(name)
 
 //Step 3
 var age;
@@ -21,9 +25,9 @@ console.log(age);
 
 age = 25;
 
-//Step 4
 console.log(age, lastName, DOB);
 
+//Step 4
 console.log("This is a text");
 console.log(true);
 console.log(false);
@@ -31,8 +35,9 @@ console.log(1215);
 console.log("999");
 console.log({}); // object (can be object, array, date)
 console.log([]); // array
-console.log(null);
+console.log(null); // null is an object, for no reason 
 console.log(undefined);
+
 
 let text = "This is a random text.";
 let numbers = 123;
@@ -43,10 +48,16 @@ let y;
 
 console.log(text + " string");
 console.log(numbers + " number");
-console.log(suite + " array");
+console.log(suite + " array donc objet");
 console.log(car + " object");
 console.log(x + " boolean");
 console.log(y + " undefined");
+
+//3 façons (2 dernières sont la même) de savoir si l'objet est un array 
+console.log(suite.isArray({})); // réponse est true or false 
+console.log(suite.isArray([])); // réponse est true or false 
+console.log([1,2,3].length); // donne le nombre de valeurs
+console.log({}.length) // pareil, donne le nombre de valeurs
 
 //Step 5
 let myText = "Test";
