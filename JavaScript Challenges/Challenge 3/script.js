@@ -97,43 +97,57 @@ console.log(squareNumber(globalVar));
 
 // For Loop 
 
-for(let i = 1; i <= 10; i++){
-console.log(i)    ;
+for (let i = 1; i <= 10; i++) {
+    console.log(i);
 }
 
 // While Loop
-let j = 10; 
-while(j>=1){
+let j = 10;
+while (j >= 1) {
     console.log(j);
     j--;
 }
 
 // Do-While Loop with Conditionals
-let h = 1; 
+let h = 1;
 do {
-    if(h%2 == 0){
-        console.log(h); 
+    if (h % 2 == 0) {
+        console.log(h);
     }
     h++;
-  }
-  while (h <= 10); 
+}
+while (h <= 10);
 
 // Advanced Loop Challenge
 
-let favoriteFruits=["banana", "cherry", "kiwi", "pear", "pineapple"]; 
+let favoriteFruits = ["banana", "cherry", "kiwi", "pear", "pineapple"];
 
-console.log(favoriteFruits); 
+console.log(favoriteFruits);
 
 for (let i = 0; i < favoriteFruits.length; i++) {
     let oneFruit = favoriteFruits[i];
     if (oneFruit.length > 5) {
-        console.log(oneFruit);   
+        console.log(oneFruit);
     }
 }
 
 console.log(favoriteFruits[4].length + " letters in " + favoriteFruits[4]); // just trying to understand length concept 
 
 
+// Bonus Step 
 
+function processArray(arrayTest, functionTest) {
+    // ???
+}
+
+
+function multiplier(number1) {
+    return function functionReturned(number2) {
+        return number1 * number2;
+    }
+}
+
+let multiplyBy5 = multiplier(5);
+console.log(multiplyBy5(2));
 
 
