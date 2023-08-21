@@ -91,7 +91,49 @@ console.log(squareNumber(9));
 let globalVar = 7;
 console.log(squareNumber(globalVar));
 
-console.log(squareNumber(localVar)); // not working because the variable is declared within the function so is accessible only within the scope of this function. 
+// console.log(squareNumber(localVar)); // not working because the variable is declared within the function so is accessible only within the scope of this function. 
+
+// Step 3 
+
+// For Loop 
+
+for(let i = 1; i <= 10; i++){
+console.log(i)    ;
+}
+
+// While Loop
+let j = 10; 
+while(j>=1){
+    console.log(j);
+    j--;
+}
+
+// Do-While Loop with Conditionals
+let h = 1; 
+do {
+    if(h%2 == 0){
+        console.log(h); 
+    }
+    h++;
+  }
+  while (h <= 10); 
+
+// Advanced Loop Challenge
+
+let favoriteFruits=["banana", "cherry", "kiwi", "pear", "pineapple"]; 
+
+console.log(favoriteFruits); 
+
+for (let i = 0; i < favoriteFruits.length; i++) {
+    let oneFruit = favoriteFruits[i];
+    if (oneFruit.length > 5) {
+        console.log(oneFruit);   
+    }
+}
+
+console.log(favoriteFruits[4].length + " letters in " + favoriteFruits[4]); // just trying to understand length concept 
+
+
 
 
 
