@@ -29,7 +29,7 @@ function findMax(x, y) {
     }
 }
 
-console.log(findMax(2, 3), findMax(7, -2), findMax(0, 0)); 
+console.log(findMax(2, 3), findMax(7, -2), findMax(0, 0));
 
 
 // Nested Function
@@ -76,6 +76,22 @@ console.log(compute(10, 5, "subtract"));
 console.log(compute(10, 5, "multiply"));
 console.log(compute(10, 5, "divide"));
 
+
+// Step 2
+
+// Arrow Function 
+
+let squareNumber = (number) => number * number; {
+    let localVar = 6;
+    console.log(squareNumber(localVar)); // working because the console.log is within the function
+}
+
+console.log(squareNumber(9));
+
+let globalVar = 7;
+console.log(squareNumber(globalVar));
+
+console.log(squareNumber(localVar)); // not working because the variable is declared within the function so is accessible only within the scope of this function. 
 
 
 
