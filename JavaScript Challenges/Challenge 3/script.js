@@ -19,7 +19,7 @@ console.log("third one " + result);
 
 function findMax(x, y) {
     if (x > y) {
-        return x;
+        return `${x} is greater than ${y}`; // pour que les numéros apparaissent 
     }
     else if (y > x) {
         return y;
@@ -55,7 +55,7 @@ function compute(a, b, operation) {
     let result3;
     switch (operation) {
         case "add":
-            result3 = add(a, b);
+            result3 = add(a, b); // ou directement -- return add() -- plus besoin de définir result3 au préalable 
             break;
         case "subtract":
             result3 = subtract(a, b);
@@ -81,15 +81,19 @@ console.log(compute(10, 5, "divide"));
 
 // Arrow Function 
 
-let squareNumber = (number) => number * number; {
+let squareNumber0 = (number) => number * number;  // cette écriture si la fonction est straightforward donc sans {}
+
+let squareNumber = (number) => {
     let localVar = 6;
     console.log(squareNumber(localVar)); // working because the console.log is within the function
-}
+    return number * number
+} // tout ce qui est dans les {} est la fonction 
+
 
 console.log(squareNumber(9));
 
 let globalVar = 7;
-console.log(squareNumber(globalVar));
+console.log(squareNumber(globalVar)); // peut être dans la fonction également  
 
 // console.log(squareNumber(localVar)); // not working because the variable is declared within the function so is accessible only within the scope of this function. 
 
@@ -131,16 +135,34 @@ for (let i = 0; i < favoriteFruits.length; i++) {
     }
 }
 
+// autre possibilité plus avancée
+for (favoriteFruit of favoriteFruits) {
+    if (favoriteFruit.length > 5)
+        console.log(favoriteFruit)
+}
+
+// encore autre possibilité plus avancée
+favoriteFruits.forEach((favoriteFruit) => {
+    if (favoriteFruit.length > 5){
+        console.log(favoriteFruit)}
+});
+
+
 console.log(favoriteFruits[4].length + " letters in " + favoriteFruits[4]); // just trying to understand length concept 
 
 
 // Bonus Step 
+
+
+// Higher order function 
 
 function processArray(arrayTest, functionTest) {
     // ???
 }
 
 
+
+// Closures 
 function multiplier(number1) {
     return function functionReturned(number2) {
         return number1 * number2;
@@ -149,5 +171,7 @@ function multiplier(number1) {
 
 let multiplyBy5 = multiplier(5);
 console.log(multiplyBy5(2));
+
+
 
 
