@@ -14,7 +14,7 @@
 
 Use JavaScript to select the `div` with class name `menu` , `header` element, and `footer` element. Then navigate to its child elements, logging them to the console.
 
-### DOM Element Creation
+### DOM Element Creation 
 
 Create a new DOM element, a `<div>` with the class "container". Inside this, add a paragraph (`<p>`) with the text `Hello, World!`.
 

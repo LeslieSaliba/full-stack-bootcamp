@@ -4,7 +4,8 @@ let firstNum; // declare variables before destructuration
 let secondNum;
 let thirdNum;
 
-// destructuration below 
+// destructuration below : si je veux pas forcément les premiers je laisse des virgules --> [, , , fouthNumber]
+// il est possible de destructurer une seconde fois avec d'autres noms 
 let fiveNumbers = [firstNum, secondNum, thirdNum, ...restOfNumbers] = [1, 7, 8, 25, 29];
 console.log(fiveNumbers);
 
@@ -19,6 +20,7 @@ let contactInfo = { email: 'leslie@gmail.com', number: 812 } // object created t
 let personalInfo = { name, age, height, locationn, nationality, contactInfo: { email, number } } = { name: "Leslie", age: 24, height: "163cm", locationn: "Lebanon", nationality: "French-Lebanese", contactInfo };
 console.log(personalInfo);
 
+personalInfo.contactInfo = {website: "none"}; // pour ajouter une key et value après coup sans modifier le statement initial 
 
 // Step 2: Spread Operator
 
