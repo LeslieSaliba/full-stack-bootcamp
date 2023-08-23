@@ -62,8 +62,6 @@ newButton.addEventListener("mouseout", function () {
 
 // Event Delegation
 
-let originalJS = document.getElementById('original');
-
 let buttonsJS = document.querySelectorAll('button');
 
 for (let i = 0; i < buttonsJS.length; i++) {
@@ -100,10 +98,44 @@ newForm.addEventListener("submit", function (event) {
     console.log("Email: ", emailInput.value);
 });
 
+// Step 3: Advanced DOM Manipulations
 
+// DOM Cloning
 
+let originalJS = document.getElementById('original');
+originalJS.cloneNode(true); // true = element is cloned with its children too 
+document.body.appendChild(originalJS);
+originalJS.style.display = "none";
 
+let pCloned = originalJS.querySelector('p');
+pCloned.textContent = "Cloned"
 
+let toggleButton = document.getElementById('clone-btn');
 
+toggleButton.addEventListener("click", function () {
+    if (originalJS.style.display === "none") {
+        originalJS.style.display = "block";
+    } else { originalJS.style.display = "none"; }
+})
 
+// Element Removal
 
+let removeHeaderButton = document.createElement('button');
+removeHeaderButton.textContent = 'Remove Header';
+document.body.appendChild(removeHeaderButton);
+
+removeHeaderButton.addEventListener("click", function () {
+    headerJS.remove();
+})
+
+// Inserting Elements
+
+function addElement() {
+    let elementBeforeFooter = document.createElement("p");
+    elementBeforeFooter.textContent = "This is my inserted element before the footer.";
+
+    footerJS.parentNode.insertBefore(elementBeforeFooter, footerJS);
+    console.log(elementBeforeFooter);
+}
+
+addElement(); // it is necessary to call the function so the element actually appears 
