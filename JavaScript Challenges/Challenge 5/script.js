@@ -2,7 +2,7 @@
 
 // DOM Tree Navigation
 
-let menuJS = document.querySelector('.menu');
+let menuJS = document.querySelector('.menu'); // ou 'div.menu' -- on peut utiliser copy path JS dans inspect directement 
 let headerJS = document.querySelector('header');
 let footerJS = document.querySelector('footer');
 
@@ -12,7 +12,7 @@ for (let i = 0; i < menuJS.children.length; i++) {
 }
 
 for (let i = 0; i < headerJS.children.length; i++) {
-    console.log("Child elements of 'header': ", headerJS.children[i]);
+    console.log("Child elements of 'header': ", headerJS.children[i]); // ou sans la for loop, directement console.log(headerJS.childNodes)
 }
 
 for (let i = 0; i < footerJS.children.length; i++) {
@@ -44,6 +44,10 @@ h1JS.style.fontStyle = "italic";
 let h3JS = document.querySelector("h3");
 h3JS.style.fontStyle = "italic";
 
+let headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6'); // pour prendre tous les headings (mêmes futurs), retourne un array donc for loop nécessaire 
+for (let heading of headings) {
+    heading.style.fontStyle = "italic";
+}
 
 // Step 2: Event Handling
 
@@ -57,7 +61,7 @@ newButton.addEventListener("mouseover", function () {
     newButton.style.backgroundColor = "green";
 })
 newButton.addEventListener("mouseout", function () {
-    newButton.style.backgroundColor = "red";
+    newButton.style.backgroundColor = ""; // pas mettre de couleur parce que "revert back" dans la consigne 
 })
 
 // Event Delegation
@@ -93,10 +97,13 @@ submitButton.type = "submit";
 newForm.appendChild(submitButton);
 
 newForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    console.log("Name: ", nameInput.value);
-    console.log("Email: ", emailInput.value);
+    event.preventDefault(); // empêche de refresh automatiquement 
+    console.log("Name: ", nameInput.value); // ou event.target[0].value 
+    console.log("Email: ", emailInput.value); // ou event.target[1].value
 });
+
+// toujours mieux de append child avant append le parent au body 
+// newForm.append(nameInput, emailInput, submitButton) -- append plusieurs enfants à un même parent 
 
 // Step 3: Advanced DOM Manipulations
 
@@ -107,12 +114,12 @@ originalJS.cloneNode(true); // true = element is cloned with its children too
 document.body.appendChild(originalJS);
 originalJS.style.display = "none";
 
-let pCloned = originalJS.querySelector('p');
+let pCloned = originalJS.querySelector('p'); // ou sur une ligne originalJS.querySelector('p').textContent='Cloned'
 pCloned.textContent = "Cloned"
 
-let toggleButton = document.getElementById('clone-btn');
+let togButton = document.getElementById('clone-btn'); 
 
-toggleButton.addEventListener("click", function () {
+togButton.addEventListener("click", function () {
     if (originalJS.style.display === "none") {
         originalJS.style.display = "block";
     } else { originalJS.style.display = "none"; }
