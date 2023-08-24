@@ -95,4 +95,23 @@ submitButton.addEventListener('click', function () {
         successMessage.textContent = "Your form has been submitted."
         document.body.appendChild(successMessage);
     }
-}); 
+});
+
+let allInputs = document.querySelectorAll('input');
+console.log(allInputs);
+
+function changeInputColor(){
+
+}
+allInputs.forEach(function (input) {
+    input.addEventListener("click", function () {
+        input.style.backgroundColor = "red";
+    })
+});
+
+document.addEventListener("click", function () { // not working properly yet 
+    allInputs.forEach(function (input) {
+        input.style.backgroundColor = "green";
+    });
+});
+
