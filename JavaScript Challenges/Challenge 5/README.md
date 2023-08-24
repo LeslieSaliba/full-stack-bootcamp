@@ -40,7 +40,11 @@ Create a button that changes color when you hover over it and reverts back when 
 
 ### Event Delegation
 
+<<<<<<< HEAD
 Target the `div` with id `container`, and implement a single event listener on the container that listens for clicks on any button, and logs the text content of the clicked button.
+=======
+Target the `div` with id `buttonContainer`, and implement a single event listener on the container that listens for clicks on any button, and logs the text content of the clicked button.
+>>>>>>> e596f4599b4d5e78b0e4ac1e672e8ac868120484
 
 ### Form Data Extraction
 
