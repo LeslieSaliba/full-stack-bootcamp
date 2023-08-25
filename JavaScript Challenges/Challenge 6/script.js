@@ -67,7 +67,7 @@ function simulateNetworkRequest() {
       } else {
         reject("Network Error!");
       }
-    }, 3000);
+    }, 3000); // 3 seconds 
   });
 }
 
@@ -82,13 +82,13 @@ async function fetchData() {
     }
 
     const postData = await postResponse.json();
-    console.log("Post data:", postData);
+    console.log("Fetched post data:", postData);
   } catch (error) {
     console.error("Error:", error);
   }
 }
 
-fetchData();
+fetchData(); // initiate the network request 
 
 
 // Step 3: Advanced Async Patterns
