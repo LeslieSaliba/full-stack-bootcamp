@@ -1,11 +1,11 @@
 // Step 1: Introduction to Asynchronous JS
 
 document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(function () {
-        let helloMessage = document.createElement("p");
-        helloMessage.textContent = "Hello after 5 seconds!";
-        document.body.appendChild(helloMessage)
-    }, 5000); // 5000 milliseconds = 5 seconds
+  setTimeout(function () {
+    let helloMessage = document.createElement("p");
+    helloMessage.textContent = "Hello after 5 seconds!";
+    document.body.appendChild(helloMessage)
+  }, 5000); // 5000 milliseconds = 5 seconds
 });
 
 
@@ -13,21 +13,21 @@ let clockDiv = document.createElement('div');
 document.body.appendChild(clockDiv);
 
 function updateClock() {
-    var now = new Date();
-    var hours = now.getHours();
-    var minutes = now.getMinutes();
-    var seconds = now.getSeconds();
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
 
-    if (hours < 10) {
-        hours = "0" + hours;
-    } else {
-        hours = hours;
-    }
-    minutes = minutes < 10 ? "0" + minutes : minutes; // same thing, different way of wrting the if-else
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+  if (hours < 10) {
+    hours = "0" + hours;
+  } else {
+    hours = hours;
+  }
+  minutes = minutes < 10 ? "0" + minutes : minutes; // same thing, different way of wrting the if-else
+  seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    var timeString = hours + ":" + minutes + ":" + seconds;
-    clockDiv.textContent = timeString;
+  var timeString = hours + ":" + minutes + ":" + seconds;
+  clockDiv.textContent = timeString;
 }
 
 setInterval(updateClock, 1000); // update every second
@@ -40,21 +40,21 @@ setInterval(updateClock, 1000); // update every second
 // 3. Rejected: The state when the asynchronous operation encounters an error or fails, and the promise is rejected with a reason.
 
 const delayedPromise = new Promise((resolve, reject) => { // created a new promise using the Promise constructor, which takes a single argument (i.e. a function with two parameters: resolve and reject)
-    setTimeout(() => { // used the setTimeout function to introduce a delay of 2 seconds
-        resolve("Promise resolved!"); // after the delay, the resolve function is called with the message "Promise resolved!"
-    }, 2000); // 2000 milliseconds = 2 seconds
+  setTimeout(() => { // used the setTimeout function to introduce a delay of 2 seconds
+    resolve("Promise resolved!"); // after the delay, the resolve function is called with the message "Promise resolved!"
+  }, 2000); // 2000 milliseconds = 2 seconds
 });
 
 delayedPromise.then(() => {
-    delayedPromise
-        .then((message) => { // attach a .then() method to the promise to specify what should happen when the promise is resolved 
-            console.log(message); // Output: Promise resolved!
-        });
-    return "Chained message!";
-})
-    .then((chainedMessage) => {
-        console.log(chainedMessage); //  Logs "Chained message!"
+  delayedPromise
+    .then((message) => { // attach a .then() method to the promise to specify what should happen when the promise is resolved 
+      console.log(message); // Output: Promise resolved!
     });
+  return "Chained message!";
+})
+  .then((chainedMessage) => {
+    console.log(chainedMessage); //  Logs "Chained message!"
+  });
 
 
 // Step 2: Diving Deeper into Async Operations
@@ -93,3 +93,44 @@ fetchData(); // initiate the network request
 
 // Step 3: Advanced Async Patterns
 
+const fetchPostsData = async () => {
+  const postIds = [1, 2, 3];
+  const fetchPromises = postIds.map(id =>
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`) // endpoint = specific location within an API that accepts requests and sends back responses
+      .then(response => response.json())
+  );
+
+  const results = await Promise.all(fetchPromises); // ensures all requests are completed before processing the results
+  console.log("Fetched post data:", results); // show all results of 1, 2, & 3 (array of objets)
+
+  fetchPostsData();
+
+  // # Ensuring All Requests Complete Before Processing Results:
+      // When you have a list of promises that you want to execute in parallel, 
+      // you can use Promise.all to ensure that all promises are completed before you start processing the results. 
+      // Promise.all takes an array of promises and returns a new promise that resolves to an array of results 
+      // when all input promises have resolved.
+
+  const fetchAndProcessPostsSequentially = async () => {
+    const postIds = [4, 5, 6, 7, 8];
+    const results = [];
+
+    for await (const id of postIds) {
+      const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+      const postData = await response.json();
+      results.push(postData);
+      console.log("Processed post:", postData); // show each result on seperate line 
+    }
+
+    console.log("Sequential processing completed. Results:", results); // show all results of 4, 5, 6, 7 & 8 (array of objets)
+  };
+};
+
+fetchAndProcessPostsSequentially();
+
+// # Async Iteration to Process Promises Sequentially:
+    // allows you to iterate over a collection of asynchronous items such as promises, in a sequential manner.
+    // This is achieved using the for await...of loop
+    // When you use for await...of, it will iterate through the promises one by one,
+    // awaiting each promise to complete before moving to the next iteration.
+    // This ensures that the promises are processed sequentially, and the code inside the loop is executed in order.
