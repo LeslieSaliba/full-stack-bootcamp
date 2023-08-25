@@ -30,7 +30,6 @@ function updateClock() {
     clockDiv.textContent = timeString;
 }
 
-updateClock(); // initial update
 setInterval(updateClock, 1000); // update every second
 
 
@@ -46,7 +45,7 @@ const delayedPromise = new Promise((resolve, reject) => { // created a new promi
     }, 2000); // 2000 milliseconds = 2 seconds
 });
 
-delayedPromise.then((message) => {
+delayedPromise.then(() => {
     delayedPromise
         .then((message) => { // attach a .then() method to the promise to specify what should happen when the promise is resolved 
             console.log(message); // Output: Promise resolved!
@@ -60,4 +59,37 @@ delayedPromise.then((message) => {
 
 // Step 2: Diving Deeper into Async Operations
 
+function simulateNetworkRequest() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() < 0.5) {
+        resolve("Data fetched successfully!");
+      } else {
+        reject("Network Error!");
+      }
+    }, 3000);
+  });
+}
+
+async function fetchData() {
+  try {
+    const response = await simulateNetworkRequest();
+    console.log(response);
+
+    const postResponse = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    if (!postResponse.ok) {
+      throw new Error("Failed to fetch post data");
+    }
+
+    const postData = await postResponse.json();
+    console.log("Post data:", postData);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+fetchData();
+
+
 // Step 3: Advanced Async Patterns
+
