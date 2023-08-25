@@ -56,39 +56,44 @@ function toggleVisibility() {
 
 // Step 3 
 
-let form = document.createElement('form');
-let fullName = document.createElement('input');
-fullName.type = "text";
+let form = document.querySelector('.form');
+let fullName = document.querySelector('.full-name');
+let emailAddress = document.querySelector('.email-address');
+let password = document.querySelector('.password');
+let confirmPassword = document.querySelector('.confirm-password');
+let submitButton = document.querySelector('.submit');
+let emailError = document.getElementById('email-error');
+let passwordError = document.getElementById('password-error');
 
-let emailAddress = document.createElement('input');
-emailAddress.type = "email";
-
-let password = document.createElement('input');
-password.type = "password";
-
-let confirmPassword = document.createElement('input');
-confirmPassword.type = "password";
-
-let submitButton = document.createElement('input');
-submitButton.type = "submit";
-
-document.body.appendChild(form);
-form.append(fullName, emailAddress, password, confirmPassword, submitButton);
 
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
+    if (!validateEmail()) {
+        return; // Return if email is not valid
+    }
     if (password.value !== confirmPassword.value) {
-        let errorPassword = document.createElement('p');
-        errorPassword.textContent = "Passwords don't match."
-        document.body.appendChild(errorPassword);
+        passwordError.textContent = "Passwords don't match.";
     }
 });
 
+
+function validateEmail() {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailPattern.test(emailAddress.value)) {
+        emailError.textContent = 'Please enter a valid email address.'; 
+        return false;
+    } else {
+        emailError.textContent = ''; // clear the error message when email becomes valid
+        return true;
+    }
+}
+
+
 submitButton.addEventListener('click', function () {
-    let fullName = form.fullName.value; // error in console: Cannot read properties of undefined (reading 'value')
-    let emailAddress = form.emailAddress.value;
-    let password = form.password.value;
-    let confirmPassword = form.confirmPassword.value;
+    fullNameValue = fullName.value;
+    emailAddressValue = emailAddress.value;
+    passwordValue = password.value;
+    confirmPasswordValue = confirmPassword.value;
 
     if (fullName && emailAddress && password && password === confirmPassword) {
         let successMessage = document.createElement('p');
@@ -98,20 +103,13 @@ submitButton.addEventListener('click', function () {
 });
 
 let allInputs = document.querySelectorAll('input');
-console.log(allInputs);
 
-function changeInputColor(){
-
-}
 allInputs.forEach(function (input) {
-    input.addEventListener("click", function () {
-        input.style.backgroundColor = "red";
-    })
-});
+    input.addEventListener('focus', function () {
+        this.style.backgroundColor = "yellow";
+    });
 
-document.addEventListener("click", function () { // not working properly yet 
-    allInputs.forEach(function (input) {
-        input.style.backgroundColor = "green";
+    input.addEventListener('blur', function () {
+        this.style.backgroundColor = "";
     });
 });
-
