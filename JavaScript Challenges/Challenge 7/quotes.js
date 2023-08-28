@@ -98,17 +98,38 @@ const quotesArray = [
 
 // Step 2 
 
-let blockquote = document.createElement('blockquote');
-blockquote.textContent = `"I think that beauty can injure you to death.It can cause an injury that can never be cured.Or it can so traumatise you, your life changes direction.The beauty of the harmony of nature that is forever lost, or a daily rite that you perform, or diving into the sea for a swim.Those experiences are going to mark you."`;
+// let blockquote = document.createElement('blockquote');
+// blockquote.textContent = `"I think that beauty can injure you to death.It can cause an injury that can never be cured.Or it can so traumatise you, your life changes direction.The beauty of the harmony of nature that is forever lost, or a daily rite that you perform, or diving into the sea for a swim.Those experiences are going to mark you."`;
 
-let author = document.createElement('div');
-author.className = "author";
+// let author = document.createElement('div');
+// author.className = "author";
 
-let dash = document.createTextNode("\u2014");
+// let dash = document.createTextNode("\u2014");
 
-let cite = document.createElement('cite');
-cite.textContent = "Toni Servillo";
+// let cite = document.createElement('cite');
+// cite.textContent = "Toni Servillo";
 
-author.append(dash, cite);
-blockquote.appendChild(author);
-document.body.appendChild(blockquote);
+// author.append(dash, cite);
+// blockquote.appendChild(author);
+// document.body.appendChild(blockquote);
+
+// Step 3 
+
+for (const quote of quotesArray) { // use for...of loop to iterate each element of the array 
+
+  let blockquote = document.createElement('blockquote');
+  blockquote.textContent = quote.content; // replace by nameOfTheArrayItem.propertyName
+
+  let author = document.createElement('div');
+  author.className = "author";
+
+  let dash = document.createTextNode("\u2014");
+
+  let cite = document.createElement('cite');
+  cite.textContent = quote.author;
+
+  author.append(dash, cite);
+  blockquote.appendChild(author);
+  document.body.appendChild(blockquote)
+
+};
