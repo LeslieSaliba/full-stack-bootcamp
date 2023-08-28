@@ -94,3 +94,21 @@ const quotesArray = [
       "Hell, there are no rules here-- we're trying to accomplish something.",
   },
 ];
+
+
+// Step 2 
+
+let blockquote = document.createElement('blockquote');
+blockquote.textContent = `"I think that beauty can injure you to death.It can cause an injury that can never be cured.Or it can so traumatise you, your life changes direction.The beauty of the harmony of nature that is forever lost, or a daily rite that you perform, or diving into the sea for a swim.Those experiences are going to mark you."`;
+
+let author = document.createElement('div');
+author.className = "author";
+
+let dash = document.createTextNode("\u2014");
+
+let cite = document.createElement('cite');
+cite.textContent = "Toni Servillo";
+
+author.append(dash, cite);
+blockquote.appendChild(author);
+document.body.appendChild(blockquote);
