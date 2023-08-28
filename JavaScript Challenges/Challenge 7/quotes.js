@@ -130,6 +130,40 @@ for (const quote of quotesArray) { // use for...of loop to iterate each element 
 
   author.append(dash, cite);
   blockquote.appendChild(author);
-  document.body.appendChild(blockquote)
+  document.body.appendChild(blockquote);
 
 };
+
+// Step 4 
+
+let authorSearch = document.getElementById('authorSearch');
+let authorButton = document.getElementById('authorBtn');
+
+authorButton.addEventListener('click', function () {
+  const authorFilter = authorSearch.value.toLowerCase(); // Convert input to lowercase for case-insensitive matching
+
+  const blockquotes = document.querySelectorAll('blockquote'); // Bring all the blockquotes available 
+  blockquotes.forEach(blockquote => {
+    blockquote.remove(); // and remove them to allow only filtered ones to appear 
+  });
+
+  for (const quote of quotesArray) {
+    const quoteAuthor = quote.author.toLowerCase(); // Also need to convert author name to lowercase to match the search 
+    if (quoteAuthor.includes(authorFilter)) { // the below code runs only if there's a match between search and author names 
+      let blockquotesFiltered = document.createElement('blockquote'); // create a new blockquote element to be displayed (local variable), and same for the below lines 
+      blockquotesFiltered.textContent = quote.content;
+
+      let author = document.createElement('div');
+      author.className = "author";
+
+      let dash = document.createTextNode("\u2014");
+
+      let cite = document.createElement('cite');
+      cite.textContent = quote.author;
+
+      author.append(dash, cite);
+      blockquotesFiltered.appendChild(author);
+      document.body.appendChild(blockquotesFiltered);
+    }
+  }
+});

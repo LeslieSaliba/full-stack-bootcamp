@@ -69,10 +69,17 @@ labelConfirmPassword.appendChild(passwordError);
 
 button.addEventListener('click', function (event) {
     event.preventDefault();
-    if (inputPassword.value !== inputConfirmPassword.value) {
+
+    const correctEmail = "leslie@leslie.com"; // setting a specific email and password as if the user is logging in 
+    const correctPassword = "leslie";
+
+    if (inputEmail.value === correctEmail && inputPassword.value === correctPassword) { // only correct email and password will allow to enter the search page 
+        window.location.href = "quotes.html";
+    }
+    else if (inputPassword.value !== inputConfirmPassword.value) {
         passwordError.textContent = "Passwords don't match.";
     }
     else {
-        window.location.href = "quotes.html";
+        passwordError.textContent = "Incorrect email or password.";
     }
 });
